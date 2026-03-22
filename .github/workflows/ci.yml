@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  lint:
+  prek:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -20,7 +20,7 @@ jobs:
 
       - uses: astral-sh/setup-uv@v6
         with:
-          version: "0.10.4"
+          version: "0.10.12"
 
       - name: Install dependencies
         run: uv sync --all-groups --all-extras --all-packages

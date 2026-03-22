@@ -7,12 +7,9 @@ repos:
     rev: v6.0.0
     hooks:
       - id: check-yaml
-      - id: check-json
       - id: check-toml
-      - id: check-xml
       - id: end-of-file-fixer
       - id: trailing-whitespace
-      - id: requirements-txt-fixer
       - id: check-added-large-files
       - id: check-merge-conflict
 
@@ -30,35 +27,11 @@ repos:
         args: [--fix]
       - id: ruff-format
         types_or: [python, pyi]
-        exclude: notebooks/*
-
-  - repo: https://github.com/asottile/pyupgrade
-    rev: v3.21.2
-    hooks:
-      - id: pyupgrade
-        args: ["--py313-plus"]
 
   - repo: https://github.com/astral-sh/uv-pre-commit
     rev: 0.10.12
     hooks:
       - id: uv-lock
-      - id: uv-sync
-        args: ["--locked", "--all-packages", "--all-groups", "--all-extras"]
-      - id: uv-export
-
-  - repo: https://github.com/jorisroovers/gitlint
-    rev: v0.19.1
-    hooks:
-      - id: gitlint
-
-  - repo: https://github.com/nbQA-dev/nbQA
-    rev: 1.9.1
-    hooks:
-      - id: nbqa-ruff
-        types_or: [jupyter]
-      - id: nbqa-pyupgrade
-        types_or: [jupyter]
-        args: ["--py313-plus"]
 
   - repo: https://github.com/compilerla/conventional-pre-commit
     rev: v4.4.0

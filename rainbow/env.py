@@ -163,7 +163,7 @@ class Env:
         int
             Размер пространства действий.
         """
-        return int(self.env.action_space.n)
+        return int(self.env.action_space.n)  # ty: ignore[unresolved-attribute]
 
     def train(self):
         """Переключение в режим обучения (потеря жизни = конец эпизода)."""

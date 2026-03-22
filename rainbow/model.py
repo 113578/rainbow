@@ -29,6 +29,9 @@ class NoisyLinear(nn.Module):
         Начальное стандартное отклонение шума (σ₀). По умолчанию 0.5.
     """
 
+    weight_epsilon: torch.Tensor
+    bias_epsilon: torch.Tensor
+
     def __init__(self, in_features: int, out_features: int, std_init: float = 0.5):
         super().__init__()
         self.in_features = in_features
@@ -151,17 +154,19 @@ class DQN(nn.Module):
         )
         self.conv_output_size = 3136  # 64 * 7 * 7
 
-        linear_cls = NoisyLinear if noisy else nn.Linear
-        extra = {"std_init": noisy_std} if noisy else {}
+        def _linear(in_f: int, out_f: int) -> nn.Module:
+            if noisy:
+                return NoisyLinear(in_f, out_f, std_init=noisy_std)
+            return nn.Linear(in_f, out_f)
 
         if dueling:
-            self.fc_h_v = linear_cls(self.conv_output_size, hidden_size, **extra)
-            self.fc_h_a = linear_cls(self.conv_output_size, hidden_size, **extra)
-            self.fc_z_v = linear_cls(hidden_size, atoms, **extra)
-            self.fc_z_a = linear_cls(hidden_size, action_space * atoms, **extra)
+            self.fc_h_v = _linear(self.conv_output_size, hidden_size)
+            self.fc_h_a = _linear(self.conv_output_size, hidden_size)
+            self.fc_z_v = _linear(hidden_size, atoms)
+            self.fc_z_a = _linear(hidden_size, action_space * atoms)
         else:
-            self.fc_h = linear_cls(self.conv_output_size, hidden_size, **extra)
-            self.fc_z = linear_cls(hidden_size, action_space * atoms, **extra)
+            self.fc_h = _linear(self.conv_output_size, hidden_size)
+            self.fc_z = _linear(hidden_size, action_space * atoms)
 
     def forward(self, x: torch.Tensor, log: bool = False) -> torch.Tensor:
         """

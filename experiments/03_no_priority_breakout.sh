@@ -2,11 +2,11 @@
 RESULTS_DIR="experiments/results"
 T_MAX=${T_MAX:-500000}
 
-echo ">>> Эксперимент 3: Pong без приоритизации (T_max=$T_MAX)"
+echo ">>> Эксперимент 3: Breakout без приоритизации (T_max=$T_MAX)"
 
 uv run python main.py \
-    --game Pong \
-    --id no_priority_pong \
+    --game Breakout \
+    --id no_priority_breakout \
     --no-priority \
     --t-max "$T_MAX" \
     --evaluation-interval 10000 \

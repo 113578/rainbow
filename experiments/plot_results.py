@@ -50,9 +50,9 @@ def main():
     experiments = {
         "rainbow_pong": ("Rainbow (Pong)", "#1f77b4"),
         "rainbow_breakout": ("Rainbow (Breakout)", "#ff7f0e"),
-        "no_priority_pong": ("Без приоритизации (Pong)", "#d62728"),
-        "no_multistep_pong": ("Без многошагового (Pong)", "#9467bd"),
-        "no_distributional_pong": ("Без распределения (Pong)", "#2ca02c"),
+        "no_priority_breakout": ("Без приоритизации (Breakout)", "#d62728"),
+        "no_multistep_breakout": ("Без многошагового (Breakout)", "#9467bd"),
+        "no_distributional_breakout": ("Без распределения (Breakout)", "#2ca02c"),
     }
 
     found = {}

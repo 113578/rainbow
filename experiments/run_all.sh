@@ -4,7 +4,7 @@ set -euo pipefail
 echo "=== Эксперименты Rainbow DQN ==="
 echo ""
 
-for script in experiments/*.sh; do
+for script in experiments/0*.sh; do
     bash "$script"
     echo ""
 done

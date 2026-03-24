@@ -225,8 +225,6 @@ class Agent:
         log_ps_a = log_ps[range(self.batch_size), actions]
 
         with torch.no_grad():
-            # Новый шум для выбора действия в следующем состоянии
-            self.online_net.reset_noise()
             pns = self.online_net(next_states)
             dns = self.support.expand_as(pns) * pns
 
@@ -304,8 +302,6 @@ class Agent:
         q_a = q[range(self.batch_size), actions]
 
         with torch.no_grad():
-            # Новый шум для выбора и оценки действий
-            self.online_net.reset_noise()
             self.target_net.reset_noise()
 
             if self.double:

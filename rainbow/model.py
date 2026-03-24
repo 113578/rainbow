@@ -26,13 +26,13 @@ class NoisyLinear(nn.Module):
     out_features : int
         Число выходных признаков.
     std_init : float, optional
-        Начальное стандартное отклонение шума (σ₀). По умолчанию 0.5.
+        Начальное стандартное отклонение шума (σ₀). По умолчанию 0.1.
     """
 
     weight_epsilon: torch.Tensor
     bias_epsilon: torch.Tensor
 
-    def __init__(self, in_features: int, out_features: int, std_init: float = 0.5):
+    def __init__(self, in_features: int, out_features: int, std_init: float = 0.1):
         super().__init__()
         self.in_features = in_features
         self.out_features = out_features

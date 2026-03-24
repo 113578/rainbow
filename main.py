@@ -72,7 +72,7 @@ def train(
     # Архитектура
     history_length: Annotated[int, typer.Option(help="Число сложенных кадров")] = 4,
     hidden_size: Annotated[int, typer.Option(help="Размер скрытого слоя")] = 512,
-    noisy_std: Annotated[float, typer.Option(help="Начальная сигма NoisyLinear")] = 0.5,
+    noisy_std: Annotated[float, typer.Option(help="Начальная сигма NoisyLinear")] = 0.1,
     atoms: Annotated[int, typer.Option(help="Число атомов распределения")] = 51,
     v_min: Annotated[
         float, typer.Option("--v-min", help="Минимум носителя распределения")

@@ -52,7 +52,7 @@ class Agent:
     hidden_size : int, optional
         Размер скрытого слоя. По умолчанию 512.
     noisy_std : float, optional
-        Начальное стандартное отклонение NoisyLinear (σ₀). По умолчанию 0.5.
+        Начальное стандартное отклонение NoisyLinear (σ₀). По умолчанию 0.1.
     history_length : int, optional
         Число сложенных кадров. По умолчанию 4.
     device : torch.device, optional
@@ -81,7 +81,7 @@ class Agent:
         learning_rate: float = 0.0000625,
         adam_eps: float = 1.5e-4,
         hidden_size: int = 512,
-        noisy_std: float = 0.5,
+        noisy_std: float = 0.1,
         history_length: int = 4,
         device: torch.device = torch.device("cpu"),
         noisy: bool = True,

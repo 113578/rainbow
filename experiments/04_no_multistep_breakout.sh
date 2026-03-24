@@ -2,11 +2,11 @@
 RESULTS_DIR="experiments/results"
 T_MAX=${T_MAX:-500000}
 
-echo ">>> Эксперимент 4: Pong без многошаговости (T_max=$T_MAX)"
+echo ">>> Эксперимент 4: Breakout без многошаговости (T_max=$T_MAX)"
 
 uv run python main.py \
-    --game Pong \
-    --id no_multistep_pong \
+    --game Breakout \
+    --id no_multistep_breakout \
     --multi-step 1 \
     --t-max "$T_MAX" \
     --evaluation-interval 10000 \

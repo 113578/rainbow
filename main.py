@@ -124,6 +124,7 @@ def train(
     # Инициализация
     np.random.seed(seed)
     torch.manual_seed(np.random.randint(1, 10000))
+    torch.backends.cudnn.benchmark = True
     device = select_device(disable_cuda=disable_cuda)
 
     output_dir = os.path.join(results_dir, id)

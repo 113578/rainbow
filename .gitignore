@@ -10,5 +10,4 @@ wheels/
 .venv
 
 # Experiments results and checkpoints
-experiments/results/
 *.pth
